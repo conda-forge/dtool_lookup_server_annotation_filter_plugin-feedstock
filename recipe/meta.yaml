@@ -21,7 +21,7 @@ requirements:
     - python {{ python_min }}
     - setuptools_scm
   run:
-    - dtool_lookup_server >=0.17.2
+    - dtool_lookup_server >=0.17.2,<0.18
     - dtoolcore >=3.17.0
     - python >={{ python_min }}
     - pymongo
