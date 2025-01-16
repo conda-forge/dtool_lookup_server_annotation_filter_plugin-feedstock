@@ -24,7 +24,7 @@ requirements:
     - dtool_lookup_server >=0.17.2,<0.18
     - dtoolcore >=3.17.0
     - python >={{ python_min }}
-    - pymongo
+    - sqlalchemy <2
 
 test:
   imports:
