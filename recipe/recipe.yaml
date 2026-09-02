@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: dtool_lookup_server_annotation_filter_plugin
+  version: 0.2.1
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/dtool_lookup_server_annotation_filter_plugin/dtool-lookup-server-annotation-filter-plugin-${{ version }}.tar.gz
+  sha256: bea6eef9709485662ba5acf2a5328d038d1fc65d64cef5e65997e010cd2a6c61
+
+build:
+  number: 3
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools_scm
+    - setuptools
+  run:
+    - dtool_lookup_server >=0.17.2,<0.18
+    - dtoolcore >=3.17.0
+    - python >=${{ python_min }}
+    - sqlalchemy <2
+
+tests:
+  - python:
+      imports:
+        - dtool_lookup_server_annotation_filter_plugin
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  summary: Extend dtool-lookup-server with ability to filter by annotations
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/jic-dtool/dtool-lookup-server-annotation-filter-plugin
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
